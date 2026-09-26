@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>一路向滇 · 13天山水自驾地图</title>
+ <meta name="description" content="2026年10月12—24日，塘厦往返，经桂林、黄果树、洱海、香格里拉的13天自驾行程与交互地图。">
+ <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23142c43'/%3E%3Cpath d='M10 46 27 19l10 17 8-12 11 22' fill='none' stroke='%23a6dcf2' stroke-width='5'/%3E%3C/svg%3E">
+ <link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <header class="top"><a class="brand" href="#">山野里 <span>ROAD NOTES / 2026</span></a><div class="top-right">塘厦出发 · 燃油自驾 · 两位驾驶员<button id="print" class="quiet">打印行程</button></div></header>
+ <main>
+  <section class="intro"><div><p class="eyebrow">广东 · 广西 · 贵州 · 云南</p><h1>一路向滇<span>，沿山水而行。</span></h1><p>2026.10.12 — 10.24 · 13 天 12 晚 · 24 日返回塘厦</p></div><figure class="photo"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Erhai_north_Panorama.jpg/3840px-Erhai_north_Panorama.jpg" alt="洱海北部的真实湖泊与群山全景" loading="eager"><figcaption><a href="https://commons.wikimedia.org/wiki/File:Erhai_north_Panorama.jpg" target="_blank" rel="noopener">洱海 · Fong Chen</a> / <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a> · 裁切展示</figcaption></figure></section>
+  <section class="stats" aria-label="行程概要"><div><span>往返总里程 · 估算</span><strong id="distance">约 4,500–5,000 km</strong></div><div><span>去程每日纯驾驶</span><strong>不超过约 5 h</strong></div><div><span>返程三天纯驾驶</span><strong>7.5–10 h / 日</strong></div><div><span>两人合计预算 · 估算</span><strong>¥12,000–17,000</strong></div></section>
+  <div class="plan-note"><span class="note-label">路线取舍</span>保留桂林、黄果树、洱海与香格里拉；云南慢游集中在 10/17–21。桂林约半天、黄果树两个半天，10/22 起连续三天返程。黄果树在贵州；香格里拉属于迪庆州。</div>
+  <section class="workspace" aria-label="交互地图与每日计划">
+   <div class="map-column"><div class="map-bar"><div class="view-switch" aria-label="地图范围"><button id="overview" class="active" aria-pressed="true">全程地图</button><button id="daymap" aria-pressed="false">当天路线</button></div><div class="legend"><span class="out">去程 / 游览</span><span class="back">返程</span></div></div><div id="map" role="region" aria-label="可缩放自驾路线地图"></div><div id="map-status" class="map-status" hidden>底图暂未加载，仍可查看站点与路线示意；导航请使用下方高德链接。</div><div class="map-caption">站点为近似位置；连线仅表示游览顺序，不代表实际公路或实时导航。可缩放地图、点击住宿点查看当天安排。底图需要联网。</div></div>
+   <aside class="day-panel" aria-label="当天行程"><div class="panel-top"><span id="day-label">DAY 01 / 13</span><div><button id="prev" aria-label="前一天">←</button><button id="next" aria-label="后一天">→</button></div></div><div id="day-detail" aria-live="polite"></div></aside>
+  </section>
+  <nav class="day-strip" id="days" aria-label="选择日期"></nav>
+  <section class="bottom-grid"><div class="section-card"><p class="eyebrow">住得方便，走得轻松</p><h2>住宿与费用</h2><p>按 <strong>2 人、1 辆车、1 间房</strong>估算；未询到实时房价，不是预订报价。经济至舒适型，优先免费停车、暖气与易进出。</p><table><caption class="sr-only">两人全程费用估算</caption><tbody><tr><th>燃油</th><td>¥2,400–3,800</td></tr><tr><th>高速通行</th><td>¥1,900–2,700</td></tr><tr><th>住宿 · 12 晚</th><td>¥2,300–3,600</td></tr><tr><th>餐饮 · 13 天</th><td>¥2,000–3,100</td></tr><tr><th>门票 / 竹筏 / 景区车</th><td>¥900–1,300</td></tr><tr><th>停车及零散交通</th><td>¥200–400</td></tr><tr><th>机动预留</th><td>¥1,000–1,500</td></tr><tr class="total"><th>建议准备</th><td>约 ¥12,000–17,000</td></tr></tbody></table><p class="small">燃油按全程约 4,450–5,020 km、7–9 L/100km、7.5–8.5 元/L 作情景测算，非当日油价。通行费为区间估算；房费按日期、区域与停车条件选择。各项极端值相加约 1.07–1.64 万元，上述准备金额已向上留余量。</p></div>
+   <div class="section-card"><p class="eyebrow">留白也是行程的一部分</p><h2>出发前确认这几件事</h2><details open><summary>预约与开放时间</summary><p>遇龙河只选一个码头线路；黄果树预约大瀑布时段，另查水帘洞和跨日规则；普达措核对实际开放湖区。10 月营业安排以官方临近公告为准，页面末尾提供来源。</p></details><details open><summary>长途分段与天气</summary><p>车程均为规划估算，不含休息、用餐和游览。去程按 5 小时上限，10/22–24 按两人合计最多 9–10 小时。出发前逐日把酒店输入导航；若超上限，提前移动住宿点并删减游览。每 1.5–2 小时停车换人，疲劳时延长休息。</p><p>目前未获得出行期可靠逐日天气或全线实时管制确认。10/9 前后开始查天气，出发前一天再核实高速、景区及高原路段公告。</p></details><details><summary>高原与穿衣</summary><p>大理之后逐步进入高原；香格里拉到达日休息，普达措安排在次日。备保暖外套、防风层、防晒和防滑鞋。若头痛伴明显恶心、气促等不适，停止继续升高；症状加重及时就医、下撤。此行不依赖药物或供氧房保证适应。</p></details><details><summary>车辆与行李</summary><p>出发前检查轮胎、胎压、刹车、雨刮和车灯，备驾驶证、行驶证、身份证、保险救援电话、反光背心、三角警示牌、饮水与常用药。每天上高速前确认油量；山区不等到油灯亮再找站。</p></details><details><summary>下雨、封路或体力不足时</summary><p>阳朔取消竹筏改岸边；黄果树只保大瀑布；洱海取消骑行；普达措缩短栈道；纳帕海不强行环湖。若高原雨雪或身体不适，10/19 起改大理—丽江低强度停留并提前返程。德天瀑布、龙脊、梅里和泸沽湖均不叠加。</p></details></div></section>
+  <section class="section-card itinerary"><div class="section-heading"><div><p class="eyebrow">13 DAYS / ALL IN ONE</p><h2>逐日行程总览</h2></div><span class="small">点击一行，回到地图查看详情</span></div><div class="table-wrap"><table><thead><tr><th>日期</th><th>路线</th><th>里程估算</th><th>纯驾驶</th><th>住宿</th></tr></thead><tbody id="all-days"></tbody></table></div></section>
+  <section class="section-card sources"><h2>信息来源与估算边界</h2><p>整理日期：2026 年 9 月 26 日。景区规则引用以下公开页面；所有车程、里程、酒店价格与到达时刻均为规划估算，未接入实时路况。地图地点为区域级近似位置，正式导航请选定实际酒店与景区停车场。</p><div id="sources"></div><p class="small">高原健康参考：<a href="https://wwwnc.cdc.gov/travel/page/travel-to-high-altitudes" target="_blank" rel="noopener">CDC · 高海拔旅行</a>。网页不进行预订，也不保证特定天气、秋色、景区开放或 24 日在封路情况下仍能按时抵达。</p></section>
+  <section id="print-details" aria-label="打印版每日详情"></section>
+ </main><footer>一路向滇 · 把时间留给风景<span>计划可调整，驾驶上限不靠赶路兑现。</span></footer>
+ <script src="vendor/leaflet.js"></script><script src="trip.js"></script><script src="app.js"></script>
+</body></html>
