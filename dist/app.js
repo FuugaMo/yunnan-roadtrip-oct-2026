@@ -1,6 +1,6 @@
 let current = 0;
 let mode = 'overview';
-const RETURN_START = 9;
+const RETURN_START = 10;
 let map, routeLayer, markerLayer;
 const $ = id => document.getElementById(id);
 const range = (r, unit) => `${r[0]}–${r[1]} ${unit}`;
