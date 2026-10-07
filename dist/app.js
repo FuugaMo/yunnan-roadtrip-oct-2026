@@ -1,6 +1,6 @@
 let current = 0;
 let mode = 'overview';
-const RETURN_START = 10;
+const RETURN_START = 11;
 let map, routeLayer, markerLayer;
 const $ = id => document.getElementById(id);
 const range = (r, unit) => `${r[0]}–${r[1]} ${unit}`;
@@ -18,9 +18,9 @@ $('sources').innerHTML = SOURCES.map(s=>`<div class="source"><a href="${s[1]}" t
 $('print-details').innerHTML = DAYS.map((d,i)=>`<article><h2>DAY ${i+1} · ${d.date}</h2>${details(d,i,false)}</article>`).join('');
 function selectDay(index, focusMap=false) {
  current = Math.max(0,Math.min(DAYS.length-1,index));
- $('day-label').textContent = `DAY ${String(current+1).padStart(2,'0')} / 13`;
+ $('day-label').textContent = `DAY ${String(current+1).padStart(2,'0')} / ${DAYS.length}`;
  $('day-detail').innerHTML = details(DAYS[current],current);
- $('prev').disabled = current===0; $('next').disabled = current===12;
+ $('prev').disabled = current===0; $('next').disabled = current===DAYS.length-1;
  document.querySelectorAll('#days [data-day]').forEach(b=>{const yes=+b.dataset.day===current;b.classList.toggle('active',yes);b.setAttribute('aria-pressed',yes)});
  document.querySelectorAll('[data-row]').forEach(r=>r.classList.toggle('selected',+r.dataset.row===current));
  document.querySelector('.day-panel').scrollTop=0;
@@ -46,7 +46,7 @@ function updateMap() {
  if(all.length)map.fitBounds(L.latLngBounds(all),{padding:[40,45],maxZoom:11,animate:false});
 }
 function addMarker(id,day,label,permanent=true){
- const marker=L.marker(coords(id),{title:`${PLACES[id][0]}，查看第${day+1}天`,icon:L.divIcon({className:'route-marker',html:`<div class="marker ${day>=10?'back':''} ${day===current?'selected':''}">${label}</div>`,iconSize:[30,30],iconAnchor:[15,15]}),keyboard:true}).addTo(markerLayer);
+ const marker=L.marker(coords(id),{title:`${PLACES[id][0]}，查看第${day+1}天`,icon:L.divIcon({className:'route-marker',html:`<div class="marker ${day>=RETURN_START?'back':''} ${day===current?'selected':''}">${label}</div>`,iconSize:[30,30],iconAnchor:[15,15]}),keyboard:true}).addTo(markerLayer);
  marker.bindTooltip(PLACES[id][0],{permanent:mode==='overview'&&permanent,direction:'top',offset:[0,-15]});
  marker.on('click',()=>selectDay(day,true));
 }
